@@ -12,7 +12,6 @@ const Sidebar = () => {
 
   return (
     <aside className="w-full h-screen lg:w-[300px] flex flex-col justify-between p-2 bg-white dark:bg-dark-900 border-r dark:border-darkBorder-700">
-      {/* Mobile Sidebar (Sheet Drawer) */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button variant="outline" className="flex items-center justify-between w-full lg:hidden p-2">
@@ -53,15 +52,15 @@ const NavLinks = () => {
       </div>
 
       {/* Codolio Extension Promo */}
-      <li>
+      <li className="mt-[50vh]">
         <a
           href="https://chromewebstore.google.com/detail/codolio/hhldiohknhejgggdehdeepiggieflfjo"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full flex flex-col p-3 border border-orange-200 bg-orange-50 dark:border-darkBorder-800 dark:bg-darkBox-800 rounded-lg"
         >
-          <h3 className="font-semibold text-lg">Try Codolio Extension</h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400">With a single click, add to My Workspace</p>
+          <h3 className="font-semibold text-lg text-orange-500">Try Codolio Extension</h3>
+          <p className="text-xs  dark:text-gray-400 text-orange-500">With a single click, add to My Workspace</p>
         </a>
       </li>
     </ul>
