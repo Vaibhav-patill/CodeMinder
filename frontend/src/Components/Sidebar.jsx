@@ -11,7 +11,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <aside className="w-full h-screen lg:w-[300px] flex flex-col justify-between p-2 bg-white dark:bg-dark-900 border-r dark:border-darkBorder-700">
+    <aside className="w-full h-screen lg:w-[260px] flex flex-col justify-between p-2 bg-white dark:bg-dark-900 border-r dark:border-darkBorder-700">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button variant="outline" className="flex items-center justify-between w-full lg:hidden p-2">
