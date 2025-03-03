@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +19,6 @@ const Header = () => {
         }
     }, [darkMode]);
     
-
     return (
         <header className="flex fixed top-0 left-0 px-4 md:px-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 items-center z-50 justify-between w-full shadow-md">
             {/* Logo Section */}
@@ -41,10 +41,7 @@ const Header = () => {
             </button>
 
             {/* Navigation Links */}
-            <nav
-                className={`md:flex items-center justify-center gap-2 mr-2 hidden ${menuOpen ? "block" : "hidden"
-                    }`}
-            >
+            <nav className={`md:flex items-center justify-center gap-2 mr-2 hidden ${menuOpen ? "block" : "hidden"}`}>
                 <a className="px-2 py-1.5 text-sm font-medium text-black dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded" href="/question-tracker">
                     Question Tracker
                 </a>
@@ -63,17 +60,7 @@ const Header = () => {
                     onClick={() => setDarkMode(!darkMode)}
                     className="p-2 hidden md:block rounded-full bg-gray-500 dark:bg-gray-800"
                 >
-                    {darkMode ? (
-                        // Sun icon for light mode
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-                            <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,88a40,40,0,1,1,40-40A40.05,40.05,0,0,1,128,168ZM128,40a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H136A8,8,0,0,1,128,40Zm48,88a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h16A8,8,0,0,1,176,128ZM128,216a8,8,0,0,1-8,8H104a8,8,0,0,1,0-16h16A8,8,0,0,1,128,216Zm-48-88a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H88A8,8,0,0,1,80,128ZM48,128a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H56A8,8,0,0,1,48,128Zm160,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H216A8,8,0,0,1,208,128Zm-80-80a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H136A8,8,0,0,1,128,48ZM80,208a8,8,0,0,1-8-8V184a8,8,0,0,1,16,0v16A8,8,0,0,1,80,208ZM176,208a8,8,0,0,1-8-8V184a8,8,0,0,1,16,0v16A8,8,0,0,1,176,208Z"></path>
-                        </svg>
-                    ) : (
-                        // Moon icon for dark mode
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-                            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"></path>
-                        </svg>
-                    )}
+                    {darkMode ? <FiSun size={24} className="text-yellow-400" /> : <FiMoon size={24} className="text-gray-200" />}
                 </button>
 
                 {/* Profile Picture */}

@@ -1,11 +1,9 @@
-import SearchFilter from "@/Components/SearchFilter"
-import UpcomingContests from "@/Components/UpcomingContests"
+import React from 'react'
 
 function EventTracker() {
   return (
     <div className='pt-20'>
-      <SearchFilter/>
-      <UpcomingContests/>
+      event-tracker
     </div>
   )
 }

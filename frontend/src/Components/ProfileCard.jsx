@@ -1,33 +1,39 @@
-import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Pencil, Mail, Github, Linkedin } from "lucide-react";
 
-const ProfileCard = () => {
+export default function ProfileCard() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-96 text-center">
-        <img
-          className="w-24 h-24 rounded-full mx-auto border-4 border-gray-300"
-          src="https://via.placeholder.com/150"
-          alt="Profile"
-        />
-        <h2 className="text-xl font-semibold mt-4">Vaibhav Patil</h2>
-        <p className="text-gray-600">Full Stack Developer</p>
-        <div className="flex justify-center space-x-4 mt-4">
-          <a href="#" className="text-blue-500 hover:text-blue-700">
-            GitHub
-          </a>
-          <a href="#" className="text-blue-500 hover:text-blue-700">
-            LinkedIn
-          </a>
-          <a href="#" className="text-blue-500 hover:text-blue-700">
-            Portfolio
-          </a>
+    <div className="flex justify-center w-full">
+      <Card className="w-full max-w-[300px] p-4 border shadow-sm">
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg font-semibold">Profile</h3>
+          <Button variant="ghost" size="icon">
+            <Pencil className="w-4 h-4" />
+          </Button>
         </div>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-          Contact Me
-        </button>
-      </div>
+        <CardContent className="flex flex-col items-center gap-4 mt-4">
+          <Avatar className="w-20 h-20">
+            <AvatarImage src="https://github.com/rohitmali.png" alt="User" />
+            <AvatarFallback>RM</AvatarFallback>
+          </Avatar>
+          <h4 className="text-lg font-medium">Rohit Mali</h4>
+          <p className="text-sm text-gray-500">MERN Stack Developer</p>
+          <div className="flex gap-4 mt-2">
+            <a href="mailto:rohit@example.com" className="text-gray-600 hover:text-gray-900">
+              <Mail className="w-5 h-5" />
+            </a>
+            <a href="https://github.com/rohitmali" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://linkedin.com/in/rohitmali" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
+              <Linkedin className="w-5 h-5" />
+            </a>
+          </div>
+          <Button className="mt-4 w-full">Get your Codolio Card</Button>
+        </CardContent>
+      </Card>
     </div>
   );
-};
-
-export default ProfileCard;
+}

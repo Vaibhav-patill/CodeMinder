@@ -3,10 +3,8 @@ import Header from '../Components/Header'
 import HeroSection from '../Components/HeroSection'
 import CodingPlatform from '../Components/CodingPlatform'
 import PrepSimplifier from '../Components/PrepSimplifier'
-import Footer from '../Components/Footer'
 import FAQ from '../Components/FAQ'
 import CodingPortfolio from '@/Components/CodingPortfolio'
-import ShareCodolioCard from '@/Components/ShareCodolioCard'
 
 
 function LandingPage() {
@@ -15,10 +13,8 @@ function LandingPage() {
             <HeroSection />
             <CodingPlatform />
             <PrepSimplifier />
-            <CodingPortfolio/>
-            <ShareCodolioCard/>
+            <CodingPortfolio />
             <FAQ />     
-
         </div>
     )
 }
