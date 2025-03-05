@@ -10,6 +10,10 @@ import Layout from './Pages/Layout';
 import ProblemSolving from './Components/ProblemSolving';
 import DevStats from './Components/DevStats';
 import ProfileEdit from './Pages/ProfileEdit';
+import BasicInfo from './Components/BasicInfo';
+import SocialProfile from './Components/Socials';
+import AccountSettings from './Components/Accounts';
+import Platform from './Components/Platform';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,7 +23,12 @@ const router = createBrowserRouter(
             <Route path="event-tracker" element={<EventTracker />} />
             <Route path="login" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="profile/edit" element={<ProfileEdit />} />
+            <Route path="profile/edit/" element={<ProfileEdit />} >
+            <Route path='basicinfo' element={<BasicInfo/>}/>
+            <Route path='socials' element={<SocialProfile/>}/>
+            <Route path='accounts' element={<AccountSettings/>}/>
+            <Route path='platform' element={<Platform/>}/>
+            </Route>
             <Route path="profile/:id" element={<ProfileTracker />}>
                 <Route index element={<ProblemSolving />} />  {/* Default Page */}
                 <Route path="problemSolving" element={<ProblemSolving />} />
