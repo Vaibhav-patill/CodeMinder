@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 function ProfileTracker() {
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-2 pt-12'>
       <ProfileCard/>
       <Outlet/>
     </div>
