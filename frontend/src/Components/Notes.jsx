@@ -52,6 +52,7 @@ export default function Notes() {
             setGeneralNotes((prev) => prev.filter((note) => note.noteId !== noteId));
             setQuestionNotes((prev) => prev.filter((note) => note.noteId !== noteId));
             if (selectedNoteId === noteId) {
+                
                 setIsEditorOpen(false);
                 setSelectedNoteId(null);
                 setNoteContent("");
