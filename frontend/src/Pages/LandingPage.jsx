@@ -11,7 +11,6 @@ function LandingPage() {
     return (
         <div className='  w-full px-4 sm:px-8 md:px-40 pt-20'>
             <HeroSection />
-            <CodingPlatform />
             <PrepSimplifier />
             <CodingPortfolio />
             <FAQ />     

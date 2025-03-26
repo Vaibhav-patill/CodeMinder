@@ -1,77 +1,75 @@
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { FiSun, FiMoon } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { checkAuth, logoutUser } from "@/Features/Auth/AuthSlice";
 
 const Header = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(
-        localStorage.getItem("theme") === "dark"
-    );
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
+    const [isScrolled, setIsScrolled] = useState(false);
 
-    // Apply dark mode on mount
     useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode]);
-    
+        dispatch(checkAuth());
+        
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [dispatch]);
+
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    };
+
     return (
-        <header className="flex fixed top-0 left-0 px-4 md:px-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 items-center z-50 justify-between w-full shadow-md">
-            {/* Logo Section */}
-            <a className="flex items-center gap-2 py-2 text-lg sm:ml-4" href="/">
-                <img src="https://codolio.com/codolio_assets/codolio.svg" alt="Codolio" width="30" height="30" />
-                <div>
-                    <span className="font-bold text-black">Code</span>
-                    <span className="font-bold text-blue-600">Minder</span>
-                </div>
-            </a>
+        <header className={`fixed top-0 left-0 w-full backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-lg z-50 transition-all duration-300 ${isScrolled ? "bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg" : "bg-white/70 dark:bg-gray-900/70"}`}>
+            <div className="flex items-center justify-between px-6 py-4">
+                {/* Logo Section */}
+                <Link className="flex items-center gap-3" to="/">
+                    <h1 className="text-xl font-bold">
+                        <span className="text-black dark:text-white">Code</span>
+                        <span className="text-blue-600">Minder</span>
+                    </h1>
+                </Link>
 
-            {/* Mobile Menu Toggle Button */}
-            <button
-                className="block md:hidden -mr-1"
-                onClick={() => setMenuOpen(!menuOpen)}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-                </svg>
-            </button>
+                {/* Centered Navigation */}
+                <nav className="hidden md:flex items-center justify-center flex-grow gap-6">
+                    <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/question-tracker">Question Tracker</Link>
+                    <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/event-tracker">Event Tracker</Link>
+                    <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/profile/Rohitmali9421">Profile Tracker</Link>
+                </nav>
 
-            {/* Navigation Links */}
-            <nav className={`md:flex items-center justify-center gap-2 mr-2 hidden ${menuOpen ? "block" : "hidden"}`}>
-                <a className="px-2 py-1.5 text-sm font-medium text-black dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded" href="/question-tracker">
-                    Question Tracker
-                </a>
-                <a className="px-2 py-1.5 text-sm font-medium text-black dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded" href="/event-tracker">
-                    Event Tracker
-                </a>
-                <a className="px-2 py-1.5 text-sm font-medium text-black dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded" href="/profile/Rohitmali9421">
-                    Profile Tracker
-                </a>
-            </nav>
-
-            {/* Profile & Theme Toggle */}
-            <div className="flex items-center gap-2">
-                {/* Theme Toggle (Dark/Light Mode) */}
-                <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 hidden md:block rounded-full bg-gray-500 dark:bg-gray-800"
-                >
-                    {darkMode ? <FiSun size={24} className="text-yellow-400" /> : <FiMoon size={24} className="text-gray-200" />}
-                </button>
-
-                {/* Profile Picture */}
-                <div className="relative">
-                    <Link
-                        to="/login"
-                        className="py-1.5 font-[500] px-3 text-sm bg-blue-800 rounded-md text-white round-border"
-                    >
-                        Login
+                {/* User Section */}
+                {user ? (
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button variant="ghost" className="p-0">
+                                <img src={user.profilePic?.url} alt="Profile" className="w-11 h-11 rounded-full border border-gray-300 object-cover hover:scale-110 transition-all duration-200" />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-56 p-3 bg-white shadow-lg rounded-xl border border-gray-200">
+                            <div className="text-center">
+                                <p className="text-base font-semibold">{user.name}</p>
+                                <p className="text-xs text-gray-600">{user.email}</p>
+                            </div>
+                            <hr className="my-2" />
+                            <div className="flex flex-col gap-3">
+                                <Link className="text-sm text-gray-700 hover:bg-gray-100 p-2 rounded-md transition" to="/profile">Profile</Link>
+                                <Link className="text-sm text-gray-700 hover:bg-gray-100 p-2 rounded-md transition" to="/profile/edit">Edit Profile</Link>
+                                <Button onClick={handleLogout} variant="destructive" className="w-full mt-2 hover:opacity-90 transition">Log Out</Button>
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+                ) : (
+                    <Link to="/login">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg transition">Login</Button>
                     </Link>
-                </div>
+                )}
             </div>
         </header>
     );

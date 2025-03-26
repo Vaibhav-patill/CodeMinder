@@ -2,55 +2,42 @@ import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <div className=" bg-gray-950 px-4 py-4 mx-auto space-y-2 overflow-hidden sm:px-6 lg:px-8">
+    <div className="bg-white px-4 py-6 mx-auto space-y-4 overflow-hidden sm:px-6 lg:px-8 shadow-lg border-t">
       {/* Navigation Links */}
-      <nav className="flex flex-wrap justify-center">
-        <div className="px-5 py-2">
-          <a href="/faq" className="text-gray-500 dark:text-darkText-400 hover:text-gray-900 dark:hover:text-darkText-400">
-            FAQ
-          </a>
-        </div>
-        <div className="px-5 py-2">
-          <a href="/support" className="text-gray-500 dark:text-darkText-400 hover:text-gray-900 dark:hover:text-darkText-400">
-            Support
-          </a>
-        </div>
-        <div className="px-5 py-2">
-          <a href="/privacy-policy" className="text-gray-500 dark:text-darkText-400 hover:text-gray-900 dark:hover:text-darkText-400">
-            Privacy
-          </a>
-        </div>
-        <div className="px-5 py-2">
-          <a href="/timeline" className="text-gray-500 dark:text-darkText-400 hover:text-gray-900 dark:hover:text-darkText-400">
-            Timeline
-          </a>
-        </div>
-        <div className="px-5 py-2">
-          <a href="/terms-and-conditions" className="text-gray-500 dark:text-darkText-400 hover:text-gray-900 dark:hover:text-darkText-400">
-            Terms
-          </a>
-        </div>
+      <nav className="flex flex-wrap justify-center space-x-6">
+        <a href="/faq" className="text-gray-600 hover:text-gray-900 transition duration-300">
+          FAQ
+        </a>
+        <a href="/support" className="text-gray-600 hover:text-gray-900 transition duration-300">
+          Support
+        </a>
+        <a href="/privacy-policy" className="text-gray-600 hover:text-gray-900 transition duration-300">
+          Privacy
+        </a>
+        <a href="/timeline" className="text-gray-600 hover:text-gray-900 transition duration-300">
+          Timeline
+        </a>
+        <a href="/terms-and-conditions" className="text-gray-600 hover:text-gray-900 transition duration-300">
+          Terms
+        </a>
       </nav>
 
       {/* Social Media Links */}
-      <div className="flex justify-center mt-8 space-x-6">
-        <a href="https://www.linkedin.com/company/codolio/" className="text-black dark:text-white">
-          <span className="sr-only">Linkedin</span>
+      <div className="flex justify-center mt-6 space-x-6">
+        <a href="https://www.linkedin.com/company/codolio/" className="text-gray-600 hover:text-blue-600 transition duration-300">
           <FaLinkedin size={38} />
         </a>
-        <a href="#" className="text-black dark:text-white">
-          <span className="sr-only">Twitter</span>
+        <a href="#" className="text-gray-600 hover:text-blue-400 transition duration-300">
           <FaTwitter size={38} />
         </a>
-        <a href="https://www.instagram.com/codolio_?igsh=ZWFmMzlrcXQyMmFr&utm_source=qr" className="text-black dark:text-white">
-          <span className="sr-only">Instagram</span>
+        <a href="https://www.instagram.com/codolio_?igsh=ZWFmMzlrcXQyMmFr&utm_source=qr" className="text-gray-600 hover:text-pink-500 transition duration-300">
           <FaInstagram size={38} />
         </a>
       </div>
 
       {/* Footer Text */}
-      <p className="text-center text-gray-400 dark:text-darkText-400">
-        © 2024 Codolio, Inc. All rights reserved.
+      <p className="text-center text-gray-500 text-sm">
+        © 2025 CodeMinder, Inc. All rights reserved.
       </p>
     </div>
   );
