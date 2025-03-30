@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 const SignIn = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { error, loading, isAuthenticated } = useSelector((state) => state.auth);
+    const { user, error, loading } = useSelector((state) => state.auth);
 
     const {
         register,
@@ -23,11 +23,12 @@ const SignIn = () => {
         dispatch(loginUser(data));
     };
 
+    // Redirect to dashboard if user is already logged in
     useEffect(() => {
-        if (isAuthenticated) {
-            navigate("/");
+        if (user) {
+            navigate("/"); // Change "/dashboard" to the desired route
         }
-    }, [isAuthenticated, navigate]);
+    }, [user, navigate]);
 
     return (
         <main className="flex items-center justify-center min-h-screen px-4">

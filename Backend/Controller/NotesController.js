@@ -151,6 +151,7 @@ const updateGeneralNote = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
  const getQuestionNoteById = async (req, res) => {
     try {
         const { id } = req.params; // Extract noteId from request parameters
@@ -205,34 +206,6 @@ const formatGeneralNoteResponse = (note) => ({
   detail: note.detail,
 });
 
-const deleteNoteById = async (req, res) => {
-  try {
-    const { noteId } = req.params;
-    const userId = req.user.id;
-
-    if (!mongoose.Types.ObjectId.isValid(noteId)) {
-      return res.status(400).json({ success: false, message: "Invalid note ID format" });
-    }
-
-    // Try deleting from Question Notes first
-    let deletedNote = await Notes.findOneAndDelete({ _id: noteId, user: userId });
-
-    // If not found in Question Notes, try deleting from General Notes
-    if (!deletedNote) {
-      deletedNote = await GeneralNotes.findOneAndDelete({ _id: noteId, user: userId });
-    }
-
-    if (!deletedNote) {
-      return res.status(404).json({ success: false, message: "Note not found or unauthorized to delete" });
-    }
-
-    return res.status(200).json({ success: true, message: "Note deleted successfully" });
-  } catch (error) {
-    console.error("Error deleting note:", error);
-    return res.status(500).json({ success: false, message: "Server error. Please try again later." });
-  }
-};
-
 export {
   handleUpdateNotes,
   handleGetNoteById,
@@ -241,6 +214,5 @@ export {
   getUserQuestionNotes,
   updateGeneralNote,
   createNote,
-  getQuestionNoteById,
-  deleteNoteById,
+  getQuestionNoteById
 };

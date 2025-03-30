@@ -1,5 +1,5 @@
 import express from "express";
-import { createGeneralNote, createNote, deleteNoteById, getQuestionNoteById, getUserNotes, getUserQuestionNotes, handleGetNoteById, handleUpdateNotes, updateGeneralNote } from "../Controller/NotesController.js";
+import { createGeneralNote, createNote, getQuestionNoteById, getUserNotes, getUserQuestionNotes, handleGetNoteById, handleUpdateNotes, updateGeneralNote } from "../Controller/NotesController.js";
 import { authenticateToken } from "../Middlewares/Auth.js";
 
 
@@ -14,5 +14,4 @@ router.post("/create",authenticateToken,createGeneralNote );
 router.post("/createquestionnote",authenticateToken,createNote );
 router.put("/general-notes/:id", updateGeneralNote);
 router.get("/:id", getQuestionNoteById);
-router.delete("/:noteId",authenticateToken, deleteNoteById);
 export default router;
