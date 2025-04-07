@@ -1,28 +1,27 @@
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
+import multer from 'multer';
 
-const upload = multer({ storage: storage });
+// Use in-memory storage (no disk write)
+const storage = multer.memoryStorage();
 
-function uploadMiddleware(req, res, next) {
-  const uploadSingle = upload.single("image");
+const upload = multer({ storage });
 
-  uploadSingle(req, res, async function (err) {
+const uploadMiddleware = (req, res, next) => {
+  const uploadSingle = upload.single('file');
+
+  uploadSingle(req, res, (err) => {
     if (err) {
       return res.status(400).json({ error: err.message });
     }
     if (!req.file) {
-      return res.status(400).json({ error: "Image is required"});
+      return res.status(400).json({ error: 'File is required' });
     }
-    req.body.imagePath = req.file.path;
+
+    // Access the file buffer via req.file.buffer
+    req.body.fileBuffer = req.file.buffer;
+    req.body.fileName = req.file.originalname;
+
     next();
   });
-}
+};
 
-module.exports = uploadMiddleware;
+export default uploadMiddleware;
