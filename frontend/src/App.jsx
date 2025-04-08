@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './App/Store';
-import { Toaster } from "@/components/ui/toaster";  // ✅ Import ShadCN Toaster
 
 import LandingPage from './Pages/LandingPage';
 import QuestionTracker from './Pages/QuestionTracker';
@@ -29,6 +28,11 @@ import JobForm from './Components/AiInterview/JobForm';
 import AiInterview from './Components/AiInterview/AiInterview';
 import AIQuestionsPage from './Components/AiInterview/AIQuestionspage';
 import CommunityChat from './Components/chat/ChatCommunity';
+import ScorePage from './Components/AiInterview/ScorePage';
+import ATSResume from './Components/chat/ATSResume';
+import ChatGemini from './Components/Chatwithgemini/ChatGemini';
+// import ATSResume from './Components/chat/ATSResume';
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -41,9 +45,14 @@ const router = createBrowserRouter(
             <Route path="ainterview" element={<InterviewDashBord />} />
             <Route path="AIJobForm" element={<JobForm />} />
             <Route path="community" element={<CommunityChat />} />
+            <Route path="resume" element={<ATSResume />} />
             <Route path="AI-Interivew/:interviewId" element={<AiInterview />} />
             <Route path="AI-Interivew/:interviewId/start" element={<AIQuestionsPage />} />
-            <Route path="AI-Interivew/:interviewId//score" element={<AIQuestionsPage />} />
+            <Route path="AI-Interivew/:interviewId/score" element={<ScorePage />} />
+            
+            {/* <Route path="resume" element={<ATSResume />} /> */}
+            <Route path="chat" element={<ChatGemini />} />
+            
             {/* <Route path="profile" element={<Resume />} /> */}
 
             {/* Nested Routes for Question Tracker */}
@@ -69,8 +78,6 @@ const router = createBrowserRouter(
                 <Route path="leetcode" element={<LeetCodeStats />} />
                 <Route path="github" element={<DevStats />} />
                 <Route path="codeforces" element={<CodeforcesProfile />} />
-                {/* <Route path="geeksforgeeks" element={<GFG />} /> */}
-
             </Route>
         </Route>
     )

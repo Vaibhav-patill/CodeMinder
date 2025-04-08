@@ -1,7 +1,5 @@
-import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { FaSearch } from "react-icons/fa";
-import WorkspaceTable from "./workspaceTable";
+import WorkspaceTable from "./WorkspaceTable";
+
 
 const Workspace = () => {
     return (
@@ -13,29 +11,7 @@ const Workspace = () => {
                     <p className="text-sm text-gray-600">Keep track of all your questions here</p>
                 </div>
 
-                {/* Filters and Actions */}
-                <div className="flex flex-wrap items-center gap-2 mt-4">
-                    {/* Search Bar */}
-                    <div className="relative w-full sm:w-[50%] xl:flex-1">
-                        <Input placeholder="Search question" className="pl-8" />
-                        <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                    </div>
-
-
-                    {["Difficulty", "Topics"].map((filter, index) => (
-                        <Select key={index}>
-                            <SelectTrigger className="w-32 flex items-center">
-                                <SelectValue placeholder={filter} />
-
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="Easy">Easy</SelectItem>
-                                <SelectItem value="Medium">Medium</SelectItem>
-                                <SelectItem value="Hard">Hard</SelectItem>
-                            </SelectContent>
-                        </Select>
-                    ))}
-                </div>
+              
 
                 
 

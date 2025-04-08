@@ -30,13 +30,15 @@ const handleCreateSheet = async (req, res) => {
 // ************************ Fetch and Add Questions ************************
 const handleFetchAndAddQuestions = async (req, res) => {
   try {
-    const { sheetId } = req.body;
+    const { sheetId, url } = req.body;
+
     if (!sheetId) return res.status(400).json({ error: "Sheet ID required." });
+    if (!url) return res.status(400).json({ error: "URL is required." });
 
     const sheet = await Sheet.findById(sheetId);
     if (!sheet) return res.status(404).json({ error: "Sheet not found." });
 
-    const { data } = await axios.get("https://node.codolio.com/api/question-tracker/v1/sheet/public/get-sheet-by-slug/striver-sde-sheet");
+    const { data } = await axios.get(url);
     const questionsData = data?.data?.questions;
 
     if (!Array.isArray(questionsData)) {
@@ -78,6 +80,7 @@ const handleFetchAndAddQuestions = async (req, res) => {
     return res.status(500).json({ error: "Server error." });
   }
 };
+
 
 // ************************ Follow / Unfollow Sheet ************************
 const handleFollowSheet = async (req, res) => {
