@@ -133,3 +133,24 @@ export const getUserInterviews = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const deleteInterviewById = async (req, res) => {
+  try {
+    const { interviewId } = req.params;
+    const userId = req.user.id;
+
+    const interview = await Interview.findOneAndDelete({
+      _id: interviewId,
+      userId, // ensures users can only delete their own interviews
+    });
+
+    if (!interview) {
+      return res.status(404).json({ message: "Interview not found or unauthorized" });
+    }
+
+    res.json({ message: "Interview deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
