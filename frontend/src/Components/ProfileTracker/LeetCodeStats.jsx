@@ -52,7 +52,7 @@ const LeetCodeStats = () => {
                 </div>
 
                 {/* Responsive Heatmap */}
-                <div className="w-full bg-white border rounded-lg shadow-sm lg:col-span-3 p-2 sm:p-4">
+                <div className="w-full bg-white border rounded-lg shadow-sm lg:col-span-3 col-span-2 p-2 sm:p-4">
                     <div className="w-full overflow-x-auto">
                         <div className="p-2 sm:p-4 border rounded-lg shadow-sm bg-gray-50 w-full">
                             <CalendarHeatmap
