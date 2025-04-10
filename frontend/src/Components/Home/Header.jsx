@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "../ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { checkAuth, logoutUser } from "@/Features/Auth/AuthSlice";
+import { checkAuth, logoutUser } from "../../Features/Auth/AuthSlice";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -43,7 +42,7 @@ const Header = () => {
                     <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/event-tracker">Event</Link>
                     <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/profile">Profile</Link>
                     <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/resume">Resume</Link>
-                    <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/chat">CodeGpt</Link>
+                    <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/chat">Ai Guide</Link>
                     <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/ainterview">AI Interview</Link>
                     <Link className="px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-lg transition" to="/community">Community</Link>
                 </nav>
