@@ -3,12 +3,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
-import { setSingleInterview } from "@/Features/Auth/interviewSlice";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ScorePage = () => {
   const { interviewId } = useParams();
@@ -20,7 +17,7 @@ const ScorePage = () => {
   useEffect(() => {
     const getAllInterviewData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/AiInterview/get/${interviewId}`, );
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/aiinterview/get/${interviewId}`, );
         dispatch(setSingleInterview(response.data));
       } catch (error) {
         console.error("Error fetching interview:", error);

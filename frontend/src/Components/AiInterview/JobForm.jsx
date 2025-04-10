@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setAIquestions } from "@/Features/Auth/interviewSlice";
+import { setAIquestions } from "../../Features/Auth/interviewSlice";
 
 
 export default function JobForm() {
@@ -25,7 +25,7 @@ export default function JobForm() {
         console.log("Form Data Submitted:", data);
         try {
 
-            const respose = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/AiInterview/create`,
+            const respose = await axios.post(`${import.meta.env.VITE_API_URL}/api/aiinterview/create`,
                 data,
             )
             dispatch(setAIquestions(respose.data.newInterview));
