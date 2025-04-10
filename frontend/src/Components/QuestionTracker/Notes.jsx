@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Search, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
+import { Input } from "../ui/input";
+import { Card } from "../ui/card";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { FiTrash2 } from "react-icons/fi";
+import { Button } from "../ui/button";
 
 export default function Notes() {
     const [activeTab, setActiveTab] = useState("general");

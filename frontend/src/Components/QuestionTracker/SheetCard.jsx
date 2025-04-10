@@ -1,5 +1,5 @@
 import { FiCheckSquare } from "react-icons/fi";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../ui/card";
 
 const SheetCard = ({ title, description, questions }) => {
     return (
