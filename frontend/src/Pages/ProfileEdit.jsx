@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaGithub } from "react-icons/fa";
 import { SiLeetcode, SiGeeksforgeeks, SiCodeforces } from "react-icons/si";
 import { MdWarning } from "react-icons/md";
-import { editUser } from "@/Features/Auth/AuthSlice";
+import { editUser } from "../Features/Auth/AuthSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,7 +11,7 @@ const ProfileEdit = () => {
   const { user, loading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState(user?.name || "");
+  const [name, setName] = useState(user?.name);
   const [email] = useState(user?.email);
   const [platforms, setPlatforms] = useState({
     github: user?.platforms?.github || "",
@@ -19,7 +19,6 @@ const ProfileEdit = () => {
     geeksforgeeks: user?.platforms?.geeksforgeeks || "",
     codeforces: user?.platforms?.codeforces || "",
   });
-  
 
   useEffect(() => {
     if (user) {
@@ -49,8 +48,6 @@ const ProfileEdit = () => {
       toast.error("An unexpected error occurred.");
     }
   };
- 
-  
 
   return (
     <div className="w-full max-w-4xl mt-20 mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-lg">
