@@ -24,6 +24,8 @@ import { Button } from "../ui/button";
 import { Card, CardHeader, CardContent, CardFooter } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Alert, AlertDescription } from "../ui/alert";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AIInterviewPage = () => {
   const dispatch = useDispatch();
@@ -188,6 +190,15 @@ const AIInterviewPage = () => {
   // Save answer to backend
   const handleSaveAnswer = async () => {
     if (!userAnswer.trim()) {
+      toast.warning("Please provide an answer before submitting", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       speakText("Please provide an answer before submitting");
       return;
     }
@@ -201,10 +212,26 @@ const AIInterviewPage = () => {
           userAnswer,
         }
       );
-      alert(response.data.message);
+      toast.success(response.data.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       console.error("Error saving answer:", error);
-      alert("Failed to save answer. Please try again.");
+      toast.error("Failed to save answer. Please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } finally {
       setSaving(false);
     }
@@ -343,6 +370,19 @@ const AIInterviewPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-20 p-4 md:p-6 bg-gray-50 min-h-screen">
+      {/* Toast Container */}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       {/* Warning Modal */}
       {showWarningModal && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
