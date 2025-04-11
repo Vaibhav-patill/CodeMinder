@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
@@ -105,6 +105,7 @@ const ScorePage = () => {
 
       {/* Go to Dashboard Button */}
       <div className="flex justify-center mt-6">
+        <Link to={"ainterview"}>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -113,6 +114,7 @@ const ScorePage = () => {
         >
           🔙 Go to Dashboard
         </motion.button>
+        </Link>
       </div>
     </motion.div>
   );
