@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './App/Store';
+import "react-toastify/dist/ReactToastify.css";
 
 import LandingPage from './Pages/LandingPage';
 import QuestionTracker from './Pages/QuestionTracker';
@@ -31,7 +32,6 @@ import CommunityChat from './Components/chat/ChatCommunity';
 import ScorePage from './Components/AiInterview/ScorePage';
 import ATSResume from './Components/chat/ATSResume';
 import ChatGemini from './Components/Chatwithgemini/ChatGemini';
-// import ATSResume from './Components/chat/ATSResume';
 
 
 const router = createBrowserRouter(
@@ -49,11 +49,8 @@ const router = createBrowserRouter(
             <Route path="AI-Interivew/:interviewId" element={<AiInterview />} />
             <Route path="AI-Interivew/:interviewId/start" element={<AIQuestionsPage />} />
             <Route path="AI-Interivew/:interviewId/score" element={<ScorePage />} />
-            
-            {/* <Route path="resume" element={<ATSResume />} /> */}
             <Route path="chat" element={<ChatGemini />} />
             
-            {/* <Route path="profile" element={<Resume />} /> */}
 
             {/* Nested Routes for Question Tracker */}
             <Route path="question-tracker" element={<QuestionTracker />}>
@@ -87,7 +84,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <RouterProvider router={router} />
-            <ToastContainer />
+            <ToastContainer position="top-right" autoClose={3000} />
         </Provider>
     );
 };
