@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify"; // 🔥
 import { FiTrash2 } from "react-icons/fi"; // 🔥
-import { Button } from "@/components/ui/button"; // 🔥
+import { Button } from "../ui/button"; // 🔥
 
 export default function InterviewDashBord() {
     const dispatch = useDispatch();
